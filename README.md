@@ -1,0 +1,2 @@
+# fuzzy-logic-pump-controller
+Assignment 1 for Computer Intelligence for Stephen Sheridan.Fuzzy logic pump controller must control the bidirectional pump shown in the diagram above in order to keep the level in the water tank between 40% and 70% full. The level in the water tank is effected by a demand for water from appliances further down the line and its level can also be effected by rainfall. The appliances further down the line can consume water from the tank and can also feed water bank into the tank.
