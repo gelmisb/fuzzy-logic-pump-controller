@@ -2,8 +2,6 @@
 ## Assignment 1 for Computer Intelligence for Stephen Sheridan
 
 ### Computational Intelligence Assignment 1 - 20%
-
-### Computational Intelligence Assignment 1 - 20%
 #### Gelmis Bartulis (B00080902)
 
 
