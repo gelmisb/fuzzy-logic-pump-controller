@@ -44,16 +44,16 @@ Gelmis Bartulis (B00080902)
 
 **Rule Matrix**
 
-|------------------------------------------------|
+| --- | --- |
 | Demand |					Level				 |
-|------------------------------------------------|
+| --- | --- |
 |		 |	vlow	low		good	high	vhigh|
 | vlow	 |	good	vlow	vlow	low		low	 |
 | low	 |	low		good	good	good	good |
 | good	 |	low		good	good	high	high |
 | high	 |	high	high	high	good	vhigh|
 | vhigh	 |	vhigh	vhigh	high	good	good |
-|------------------------------------------------|
+| --- | --- |
 
 
 
