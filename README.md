@@ -1,4 +1,6 @@
-# Assignment 1 for Computer Intelligence for Stephen Sheridan
+# Assignment 1 for Computer Intelligence 
+## Fuzzy logic pump controller
+**for Stephen Sheridan**
 
 ### Computational Intelligence Assignment 1 - 20%
 #### Gelmis Bartulis (B00080902)
