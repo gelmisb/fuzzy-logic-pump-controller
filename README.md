@@ -24,5 +24,67 @@ light remains on. You should use the pump, rain, and demand checkboxes to ensure
 works under all conditions. You will need to submit a single zipped file containing your design
 document and the java source code.
 
+Computational Intelligence Assignment 1 - 20%
+Gelmis Bartulis (B00080902)
+
+
+ 
+![Alt text](images/level.png?raw=true "Inputvariable1 - Level")
+
+
+
+
+![Alt text](images/demand.png?raw=true "Inputvariable2 - Demand")
+
+
+
+
+![Alt text](images/command.png?raw=true "Outputvariable - Command")
+
+
+**Rule Matrix**
+
+|------------------------------------------------|
+| Demand |					Level				 |
+|------------------------------------------------|
+|		 |	vlow	low		good	high	vhigh|
+| vlow	 |	good	vlow	vlow	low		low	 |
+| low	 |	low		good	good	good	good |
+| good	 |	low		good	good	high	high |
+| high	 |	high	high	high	good	vhigh|
+| vhigh	 |	vhigh	vhigh	high	good	good |
+|------------------------------------------------|
+
+
+
+
+
+
+**Translated rules**
+
+```
+if (level is vlow or level is low) then command is vhigh
+if (level is good) then command is good
+if (level is high or level is vhigh) then command is vlow
+
+if (level is good and demand is vlow) then command is vlow
+if (level is good and demand is low) then command is low
+if (level is good and demand is good) then command is good
+if (level is good and demand is high) then command is high
+if (level is good and demand is vhigh) then command is vhigh
+
+if (level is vlow and demand is vlow) then command is good
+if (level is low and demand is low) then command is good
+if (level is high and demand is high) then command is good
+
+if (level is vlow and demand is vhigh) then command is vhigh
+if (level is low and demand is vhigh) then command is high
+if (level is high and demand is vhigh) then command is low
+if (level is vhigh and demand is vhigh) then command is vlow
+
+```
+
+
+
 #### Deadline
 **Friday March 9th 2018 at 18.00hrs.**
