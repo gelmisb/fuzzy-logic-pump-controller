@@ -4,7 +4,6 @@
 
 
 
-### Computational Intelligence Assignment 1 - 20%
 #### Gelmis Bartulis (B00080902)
 
 
