@@ -82,6 +82,7 @@ public class FuzzyPumpController extends PApplet {
         inputVariable1.setName("level");
         inputVariable1.setRange(0, 100);
 
+        // TODO: create the appropriate terms for inputVariable1 	
         // Add each term for the Linguistic variable
         // Water level term setup
         inputVariable1.addTerm(new Trapezoid("vlow", 0, 10, 20, 30));
@@ -99,13 +100,14 @@ public class FuzzyPumpController extends PApplet {
         inputVariable2.setEnabled(true);
         inputVariable2.setName("demand");
         inputVariable2.setRange(-1.0, 1.50);
+        
+        // TODO: create the appropriate terms for inputVariable2 	
         // Add each term for the Linguistic variable
-        // TODO: create the appropriate terms for inputVariable2 - see lab sheet	
         inputVariable2.addTerm(new Triangle("vlow", -1.0, -0.75, -0.50));
-        inputVariable2.addTerm(new Trapezoid("low", -0.50, -0.25, 0, 0.25));
-        inputVariable2.addTerm(new Trapezoid("good", 0, 0.25, 0.50, 0.75));
-        inputVariable2.addTerm(new Trapezoid("high", 0.50, 0.75, 1.0, 1.25));
-        inputVariable2.addTerm(new Triangle("vhigh", 1.00, 1.25, 1.50));
+        inputVariable2.addTerm(new Trapezoid("low", -0.75, -0.50, -0.25, 0));
+        inputVariable2.addTerm(new Trapezoid("good", -0.25, 0, 0.25, 0.50));
+        inputVariable2.addTerm(new Trapezoid("high", 0.25, 0.50, 0.75, 1.0));
+        inputVariable2.addTerm(new Trapezoid("vhigh", 0.75, 1.0, 1.25, 1.50));
         
         // Add the variable to the fuzzy engine
         engine.addInputVariable(inputVariable2);
@@ -120,7 +122,7 @@ public class FuzzyPumpController extends PApplet {
         // How should the rules be accumulated
         outputVariable.fuzzyOutput().setAccumulation(new Maximum());
         // How will the output be Defuzzified?
-        outputVariable.setDefuzzifier(new Centroid(200));
+        outputVariable.setDefuzzifier(new Centroid(100));
         outputVariable.setLockValidOutput(false);
         outputVariable.setLockOutputRange(false);
         // Add each term for the Linguistic variable
@@ -147,12 +149,9 @@ public class FuzzyPumpController extends PApplet {
         
         
         // Add the rules as follows
-        
-        ruleBlock.addRule(Rule.parse("if (level is vlow) then command is vhigh", engine));
-        ruleBlock.addRule(Rule.parse("if (level is low) then command is high", engine));
+        ruleBlock.addRule(Rule.parse("if (level is vlow or level is low) then command is vhigh", engine));
         ruleBlock.addRule(Rule.parse("if (level is good) then command is good", engine));
-        ruleBlock.addRule(Rule.parse("if (level is high) then command is low", engine));
-        ruleBlock.addRule(Rule.parse("if (level is vhigh) then command is vlow", engine));
+        ruleBlock.addRule(Rule.parse("if (level is high or level is vhigh) then command is vlow", engine));
 
         ruleBlock.addRule(Rule.parse("if (level is good and demand is vlow) then command is vlow", engine));
         ruleBlock.addRule(Rule.parse("if (level is good and demand is low) then command is low", engine));
@@ -160,13 +159,15 @@ public class FuzzyPumpController extends PApplet {
         ruleBlock.addRule(Rule.parse("if (level is good and demand is high) then command is high", engine));
         ruleBlock.addRule(Rule.parse("if (level is good and demand is vhigh) then command is vhigh", engine));
         
+        ruleBlock.addRule(Rule.parse("if (level is vlow and demand is vlow) then command is good", engine));
+        ruleBlock.addRule(Rule.parse("if (level is low and demand is low) then command is good", engine));
+        ruleBlock.addRule(Rule.parse("if (level is high and demand is high) then command is good", engine));
+
         ruleBlock.addRule(Rule.parse("if (level is vlow and demand is vhigh) then command is vhigh", engine));
         ruleBlock.addRule(Rule.parse("if (level is low and demand is vhigh) then command is high", engine));
         ruleBlock.addRule(Rule.parse("if (level is high and demand is vhigh) then command is low", engine));
         ruleBlock.addRule(Rule.parse("if (level is vhigh and demand is vhigh) then command is vlow", engine));
-        
-      
-        
+
         
         // Add the rule block to the fuzzy engine
         engine.addRuleBlock(ruleBlock);
@@ -244,7 +245,6 @@ public class FuzzyPumpController extends PApplet {
         inputVariable2.setInputValue(d);
 
         // TODO: Run the engine
-        // Call engine.process();
         engine.process();
         
         // TODO: Return the output -> outputVariable.defuzzify()
