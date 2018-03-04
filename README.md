@@ -1,23 +1,36 @@
-# Assignment 1 for Computer Intelligence 
-## Fuzzy logic pump controller
+# Fuzzy logic pump controller 
+## Assignment 1 for Computer Intelligence
 **for Stephen Sheridan**
+
+
 
 ### Computational Intelligence Assignment 1 - 20%
 #### Gelmis Bartulis (B00080902)
 
 
+
  **InputVariable1**
+ 
+ 
 ![Alt text](images/level.png?raw=true "Inputvariable1 - Level")
 
 
 
  **InputVariable2**
+ 
+ 
 ![Alt text](images/demand.png?raw=true "Inputvariable2 - Demand")
 
 
 
  **Outputvariable**
+ 
+ 
 ![Alt text](images/command.png?raw=true "Outputvariable - Command")
+
+
+
+
 
 
 **Rule Matrix**
